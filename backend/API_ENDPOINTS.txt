@@ -1,0 +1,78 @@
+==================================================
+        LOGIN & REGISTER API ENDPOINTS
+==================================================
+
+BASE URL: http://localhost:5000/api
+
+--------------------------------------------------
+1. AUTHENTICATION
+--------------------------------------------------
+
+1.1 Register User
+URL: /register
+Method: POST
+Data: {
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "yourpassword"
+}
+
+1.2 Login User
+URL: /login
+Method: POST
+Data: {
+  "email": "john@example.com",
+  "password": "yourpassword"
+}
+
+--------------------------------------------------
+2. CONTACT MANAGEMENT (After Login)
+--------------------------------------------------
+
+2.1 Add Contact
+URL: /contacts/add
+Method: POST
+Data: {
+  "userId": "User_ID_From_Login_Response",
+  "name": "Friend Name",
+  "contact_no": "1234567890"
+}
+
+2.2 View My Contacts
+URL: /contacts/view/:userId
+Method: GET
+Example: /contacts/view/661f00000000000000
+
+2.3 Update Contact
+URL: /contacts/update/:id
+Method: PUT
+Data: {
+  "name": "Updated Name",
+  "contact_no": "9876543210"
+}
+
+2.4 Delete Contact
+URL: /contacts/delete/:id
+Method: DELETE
+
+--------------------------------------------------
+3. ACCOUNT MANAGEMENT (Manage Login User)
+--------------------------------------------------
+
+3.1 Update Account Details
+URL: /users/update/:id
+Method: PUT
+Data: {
+  "name": "New Name",
+  "email": "newemail@example.com",
+  "password": "newpassword123"
+}
+
+3.2 Delete Account
+URL: /users/delete/:id
+Method: DELETE (Warning: This deletes all contacts too)
+
+==================================================
+NOTE: Use the "_id" returned during Login as the 
+"userId" or ":id" in the subsequent API calls.
+==================================================
