@@ -1,0 +1,78 @@
+.dashboard-card {
+    border: none;
+    border-radius: 16px;
+    color: white;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-6px);
+}
+
+.balance-card {
+    background: #0d6efd;
+}
+
+.income-card {
+    background: #198754;
+}
+
+.expense-card {
+    background: #dc3545;
+}
+
+.saving-card {
+    background: #6f42c1;
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.chart-box {
+    height: 300px;
+    background: #f8f9fa;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+
+.card {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.chart-box {
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    background: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.bar {
+  width: 40px;
+  min-height: 20px;
+  background: linear-gradient(to top,#19c2ff,#1e5eff);
+  border-radius: 10px 10px 0 0;
+  transition: .5s ease;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+@media (max-width: 1024px){
+    .dashboard-card{
+        margin-top: 60px;
+    }
+}

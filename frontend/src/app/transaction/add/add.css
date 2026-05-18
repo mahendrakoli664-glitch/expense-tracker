@@ -1,0 +1,65 @@
+.form-card,
+.chart-card {
+    border-radius: 20px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    padding: 12px;
+}
+
+button {
+    border-radius: 12px;
+}
+
+.chart-box {
+    height: 320px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    border-bottom: 2px solid #ddd;
+    padding: 20px;
+}
+
+.bar {
+    width: 60px;
+    border-radius: 12px 12px 0 0;
+}
+
+.food {
+    height: 180px;
+    background: #ff6384;
+}
+
+.transport {
+    height: 40px;
+    background: #36a2eb;
+}
+
+.entertainment {
+    height: 20px;
+    background: #c9cbcf;
+}
+
+.utilities {
+    height: 260px;
+    background: #4bc0c0;
+}
+
+.shopping {
+    height: 90px;
+    background: #9966ff;
+}
+
+.healthcare {
+    height: 70px;
+    background: #ff9f40;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    font-weight: 600;
+}

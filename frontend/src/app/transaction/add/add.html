@@ -1,0 +1,61 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="text-center mb-4 text-primary">
+                        Add Transaction
+                    </h2>
+
+                    <form (ngSubmit)="addTransactions()">
+
+                        <div class="mb-3">
+                            <label>Title</label>
+                            <input type="text"
+                                   name="title"
+                                   [(ngModel)]="transaction.title"
+                                   class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Amount</label>
+                            <input type="number"
+                                   name="amount"
+                                   [(ngModel)]="transaction.amount"
+                                   class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Type</label>
+                            <select name="type"
+                                    class="form-control"
+                                    [(ngModel)]="transaction.type">
+
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Date</label>
+                            <input type="date"
+                                   name="date"
+                                   [(ngModel)]="transaction.date"
+                                   class="form-control">
+                        </div>
+
+                        <button class="btn btn-success w-100" type="submit">
+                            {{editMode ? 'Update Transaction' : 'Save Transaction'}}
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

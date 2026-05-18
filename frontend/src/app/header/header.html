@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3 shadow">
+
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" routerLink="/home">
+        <i class="fas fa-wallet me-2"></i>
+        Expense Tracker
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <!-- Menu -->
+        <ul class="navbar-nav ms-lg-4">
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard">
+                    <i class="fas fa-home me-2"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/list-transaction">
+                    <i class="fas fa-list me-2"></i>
+                    Transactions
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/add-transaction">
+                    <i class="fas fa-plus-circle me-2"></i>
+                    Add Expense
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/reports">
+                    <i class="fas fa-chart-pie me-2"></i>
+                    Reports
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- Search -->
+        <form class="d-flex ms-auto mt-3 me-2 mt-lg-0 search-box">
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                </span>
+                <input type="search"
+                       class="form-control"
+                       placeholder="Search transaction"
+                       name="searchText"
+                       [(ngModel)]="searchText"
+                       (input)="onSearch()">
+            </div>
+        </form>
+
+        <!-- Right Buttons -->
+        <div class="d-flex flex-column flex-lg-row mt-3 mt-lg-0">
+
+            <div class="dropdown me-2">
+            
+                <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
+            
+                    <i class="fas fa-user me-2"></i>
+                    {{user.name || 'Account'}}
+            
+                </button>
+            
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+            
+                    <li class="dropdown-header">
+                        <strong>{{user.name}}</strong>
+                    </li>
+            
+                    <li>
+                        <span class="dropdown-item-text">
+                            {{user.email}}
+                        </span>
+                    </li>
+            
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+            
+                </ul>
+            
+            </div>
+
+            <button class="btn btn-danger" (click)="logout()">
+                <i class="fas fa-sign-out-alt me-2"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+</nav>

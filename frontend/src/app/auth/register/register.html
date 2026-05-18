@@ -1,0 +1,59 @@
+<div class="register-page">
+    <div class="row justify-content-center w-100">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="text-center text-success">
+                        Welcome to Expense Tracker
+                    </h2>
+
+                    <h2 class="text-center text-success mb-4">
+                        Register
+                    </h2>
+
+                    <form (ngSubmit)="register()">
+
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <input 
+                                type="text"
+                                name="name"
+                                [(ngModel)]="name"
+                                class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Email</label>
+                            <input 
+                                type="email"
+                                name="email"
+                                [(ngModel)]="email"
+                                class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Password</label>
+                            <input 
+                                type="password"
+                                name="password"
+                                [(ngModel)]="password"
+                                class="form-control">
+                        </div>
+
+                        <button class="btn btn-success w-100" type="submit">
+                            Register
+                        </button>
+
+                        <p class="text-center mt-3">
+                            Already have account?
+                            <a routerLink="/login">Login</a>
+                        </p>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

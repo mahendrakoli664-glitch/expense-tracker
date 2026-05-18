@@ -1,0 +1,63 @@
+<div class="container-fluid mt-4">
+
+    <!-- Heading + Button -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
+
+        <h3 class="fw-bold">
+            <i class="fas fa-list me-2"></i>
+            Transactions
+        </h3>
+
+        <button class="btn btn-primary" routerLink="/add-transaction">
+            <i class="fas fa-plus-circle me-2"></i>
+            Add Transaction
+        </button>
+
+    </div>
+
+    <!-- Table -->
+    <div class="card shadow-sm p-3">
+    
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let transaction of transactions; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{transaction.title}}</td>
+                        <td>{{transaction.amount}}</td>
+                        <td>
+                            <span class="badge" [style.background]="transaction.type === 'income' ? 'green' : transaction.type === 'expense' ? 'red' : '' ">{{transaction.type}}</span>
+                        </td>
+                        <td>{{transaction.date}}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm me-2" (click)="getEdit(transaction)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+
+                            <button class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

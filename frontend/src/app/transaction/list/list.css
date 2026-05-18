@@ -1,0 +1,46 @@
+.card {
+    border: none;
+    border-radius: 16px;
+}
+
+table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.btn-sm {
+    border-radius: 8px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+}
+
+.badge {
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+@media (max-width:768px){
+
+    h3{
+        font-size:25px;
+    }
+
+    .btn-primary{
+        font-size:14px;
+        padding:8px 12px;
+    }
+
+    table{
+        font-size:14px;
+    }
+    
+}
+
+@media (max-width: 1024px){
+    .d-flex{
+        margin-top: 80px;
+    }
+}
