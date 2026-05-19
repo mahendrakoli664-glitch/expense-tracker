@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Transaction } from '../service/transaction';
-import { Header } from '../header/header';
+import { Search } from '../service/search';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, Header],
+  imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
@@ -31,20 +32,21 @@ export class Dashboard implements OnInit {
     date: ''
   };
 
-  constructor(private api: Transaction) {}
+  constructor(private api: Transaction, private search: Search) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.getTransaction();
-    }, 100);
+    this.getTransaction()
+
+    this.search.search$.subscribe((value: string) => {
+      this.searchTransaction(value);
+    });
   }
 
   getTransaction() {
     this.api.getTransactions().subscribe({
       next: (res: any) => {
-        this.allTransactions = res;
         this.transaction = res;
-        alert('Get All Expense Loaded');
+        this.allTransactions = res;
 
         this.calculateTotals();
         this.chartTransaction();
@@ -161,9 +163,16 @@ export class Dashboard implements OnInit {
     };
   }
 
-  searchTransaction(value: any) {
+  deleteTransaction(id: string) {
+    this.api.deleteTransaction(id).subscribe(() => {
+      this.getTransaction();
+      alert('Delete Transaction Successfully');
+    });
+  }
 
-    if (!value.trim()) {
+  searchTransaction(value: string) {
+
+    if (!value || !value.trim()) {
       this.transaction = this.allTransactions;
       return;
     }
@@ -171,12 +180,5 @@ export class Dashboard implements OnInit {
     this.transaction = this.allTransactions.filter((t: any) =>
       t.title.toLowerCase().includes(value.toLowerCase())
     );
-  }
-
-  deleteTransaction(id: string) {
-    this.api.deleteTransaction(id).subscribe(() => {
-      this.getTransaction();
-      alert('Delete Transaction Successfully');
-    });
   }
 }

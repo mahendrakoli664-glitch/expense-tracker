@@ -1,20 +1,20 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Transaction } from '../service/transaction';
+import { Search } from '../service/search';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   imports: [RouterLink, FormsModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class Header implements OnInit{
   user:any = {};
-  @Output() search = new EventEmitter<string>();
   searchText: string = '';
 
-  constructor(private router:Router, private api: Transaction){}
+  constructor(private router:Router, private search: Search){}
 
   ngOnInit(){
 
@@ -28,7 +28,7 @@ export class Header implements OnInit{
   }
 
   onSearch() {
-    this.search.emit(this.searchText);
+    this.search.setSearch(this.searchText);
   }
 
   logout(){
