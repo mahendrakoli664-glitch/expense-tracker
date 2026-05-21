@@ -1,78 +1,98 @@
 ==================================================
-        LOGIN & REGISTER API ENDPOINTS
+        EXPENSE TRACKER API ENDPOINTS
 ==================================================
 
-BASE URL: http://localhost:5000/api
+BASE URL:
+http://localhost:5000/api
 
 --------------------------------------------------
 1. AUTHENTICATION
 --------------------------------------------------
 
 1.1 Register User
-URL: /register
+URL: /auth/register
 Method: POST
-Data: {
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "yourpassword"
+
+Data:
+{
+  "name": "Mahendra",
+  "email": "mahendra@gmail.com",
+  "password": "123456"
 }
+
+--------------------------------------------------
 
 1.2 Login User
-URL: /login
+URL: /auth/login
 Method: POST
-Data: {
-  "email": "john@example.com",
-  "password": "yourpassword"
+
+Data:
+{
+  "email": "mahendra@gmail.com",
+  "password": "123456"
+}
+
+Response:
+{
+  "token": "JWT_TOKEN"
 }
 
 --------------------------------------------------
-2. CONTACT MANAGEMENT (After Login)
+2. EXPENSE MANAGEMENT (After Login)
 --------------------------------------------------
 
-2.1 Add Contact
-URL: /contacts/add
+2.1 Add Expense
+URL: /expenses
 Method: POST
-Data: {
-  "userId": "User_ID_From_Login_Response",
-  "name": "Friend Name",
-  "contact_no": "1234567890"
+
+Headers:
+Authorization: JWT_TOKEN
+
+Data:
+{
+  "title": "Food",
+  "amount": 500,
+  "category": "Daily Expense"
 }
 
-2.2 View My Contacts
-URL: /contacts/view/:userId
+--------------------------------------------------
+
+2.2 Get All Expenses
+URL: /expenses
 Method: GET
-Example: /contacts/view/661f00000000000000
 
-2.3 Update Contact
-URL: /contacts/update/:id
-Method: PUT
-Data: {
-  "name": "Updated Name",
-  "contact_no": "9876543210"
-}
+Headers:
+Authorization: JWT_TOKEN
 
-2.4 Delete Contact
-URL: /contacts/delete/:id
+--------------------------------------------------
+
+2.3 Delete Expense
+URL: /expenses/:id
 Method: DELETE
 
+Example:
+ /expenses/661f00000000000000
+
+Headers:
+Authorization: JWT_TOKEN
+
 --------------------------------------------------
-3. ACCOUNT MANAGEMENT (Manage Login User)
+3. DATABASE
 --------------------------------------------------
 
-3.1 Update Account Details
-URL: /users/update/:id
-Method: PUT
-Data: {
-  "name": "New Name",
-  "email": "newemail@example.com",
-  "password": "newpassword123"
-}
+MongoDB Database:
+expenseTracker
 
-3.2 Delete Account
-URL: /users/delete/:id
-Method: DELETE (Warning: This deletes all contacts too)
+Collection:
+users
+expenses
 
 ==================================================
-NOTE: Use the "_id" returned during Login as the 
-"userId" or ":id" in the subsequent API calls.
+NOTE:
+Login ke baad jo token milega
+use Authorization header me bhejna hai.
+
+Example:
+
+Authorization: eyJhbGciOiJIUzI1Ni...
 ==================================================
